@@ -59,7 +59,7 @@ class Stage extends DisplayObjectContainer {
 	public static var OrientationPortraitAny = 7;	// This and below for use with setFixedOrientation() on iOS
 	public static var OrientationLandscapeAny = 8;
 	public static var OrientationAny = 9;
-	public stack var canResize(default, default):Bool = true;
+	public static var canResize(default, default):Bool = true;
 	
 	public var allowsFullScreen:Bool;
 	public var autos3d (get, set):Bool;
