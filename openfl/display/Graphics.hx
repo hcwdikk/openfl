@@ -589,14 +589,14 @@ import js.html.CanvasRenderingContext2D;
 						tileWidth = tile.width * scale;
 						tileHeight = tile.height * scale;
 						
-						x -= tilePoint.x * tileWidth;
-						y -= tilePoint.y * tileHeight;
+						
 						
 						if (rotation != 0) {
 							
 							rect.setTo (0, 0, tileWidth, tileHeight);
 							
 							matrix.identity ();
+							matrix.translate (- tilePoint.x * scale, - tilePoint.y * scale);
 							matrix.rotate (rotation);
 							matrix.translate (x, y);
 							
@@ -607,6 +607,10 @@ import js.html.CanvasRenderingContext2D;
 							
 						} else {
 							
+							
+							x -= tilePoint.x * scale;
+ +							y -= tilePoint.y * scale;
+						
 							__inflateBounds (x, y);
 							__inflateBounds (x + tileWidth, y + tileHeight);
 							
@@ -666,8 +670,8 @@ import js.html.CanvasRenderingContext2D;
 					if (tile != null) {
 						
 						centerPoint = sheet.__centerPoints[id];
-						originX = centerPoint.x * tile.width;
-						originY = centerPoint.y * tile.height;
+						originX = centerPoint.x;
+ +						originY = centerPoint.y;
 						
 						__inflateBounds (x - originX, y - originY);
 						__inflateBounds (x - originX + tile.width, y - originY + tile.height);
